@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MJ Memorables | Bluepanda AI</title>
+    <title>Michael Jackson Memorables | Bluepanda AI</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Orbitron:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            /* Using a high-quality MJ Silhouette backdrop */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://wallpaperaccess.com/full/1505325.jpg') no-repeat center center fixed;
+            /* IMAGE 0 INTEGRATION: Watercolor MJ Background */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://i.ibb.co/mF9mZ3R/1000093401.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Segoe UI', sans-serif;
@@ -21,53 +21,66 @@
             align-items: center;
         }
 
-        /* Movie Style Title */
-        h1 {
-            font-family: 'Cinzel', serif; /* Classic Movie look */
-            font-size: 3.5rem;
+        .header-container {
+            margin-top: 50px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* IMAGE 1 INTEGRATION: MJ Signature Title */
+        .signature-title {
+            width: 350px;
+            max-width: 80%;
+            filter: invert(1); /* Makes the black signature white for the dark background */
             margin-bottom: 0;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
-            letter-spacing: 5px;
-            text-transform: uppercase;
         }
 
         .company-tag {
             font-family: 'Orbitron', sans-serif;
             color: #00d4ff;
             letter-spacing: 3px;
-            margin-bottom: 30px;
+            font-size: 0.9rem;
+            margin-top: -10px;
+        }
+
+        .category-title {
+            width: 85%;
+            border-left: 5px solid #00d4ff;
+            padding-left: 15px;
+            font-size: 1.8rem;
+            margin-top: 60px;
+            font-weight: bold;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1300px;
+            margin: 30px 0;
         }
 
         /* Gemini Glowing Video Box */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px 0;
-        }
-
         .video-box {
             position: relative;
-            padding: 10px;
+            padding: 5px;
             background: rgba(0,0,0,0.9);
             border-radius: 15px;
             overflow: hidden;
         }
 
-        /* Gemini Animated Lines for Boxes */
         .video-box::after {
             content: "";
             position: absolute;
             inset: 0;
             border-radius: 15px;
-            padding: 3px;
+            padding: 2px;
             background: linear-gradient(90deg, transparent, #fff, transparent, #fff);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
             background-size: 200% 100%;
-            animation: moveLine 3s linear infinite;
+            animation: moveLine 4s linear infinite;
         }
 
         @keyframes moveLine {
@@ -75,43 +88,35 @@
             100% { background-position: 200% 50%; }
         }
 
-        .video-box iframe {
+        iframe {
             width: 100%;
             aspect-ratio: 16/9;
             border-radius: 10px;
             border: none;
-        }
-
-        .category-title {
-            width: 100%;
-            text-align: left;
-            margin-left: 10%;
-            border-left: 5px solid #00d4ff;
-            padding-left: 15px;
-            font-size: 1.5rem;
-            margin-top: 40px;
+            display: block;
         }
 
         .message-section {
             width: 90%;
-            max-width: 600px;
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 24px;
+            max-width: 650px;
+            background: rgba(255,255,255,0.07);
+            padding: 40px;
+            border-radius: 30px;
             backdrop-filter: blur(15px);
-            margin: 50px 0;
-            border: 1px solid rgba(255,255,255,0.1);
+            margin: 80px 0;
+            text-align: center;
         }
 
-        button {
-            background: white;
-            color: black;
+        .btn-main {
+            background: #fff;
+            color: #000;
             border: none;
-            padding: 15px 40px;
+            padding: 15px 45px;
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -121,30 +126,31 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
     </audio>
 
-    <div style="text-align:center; margin-top: 100px;">
-        <h1>Michael Jackson</h1>
-        <div class="company-tag">Produced by Bluepanda AI</div>
-        <button onclick="startExperience()" id="playBtn">ENTER THE LEGACY</button>
+    <div class="header-container">
+        <img src="https://i.ibb.co/6NB08bX/1000093403.jpg" alt="Michael Jackson" class="signature-title">
+        <div class="company-tag">Produced by Bluepanda AI Web Company</div>
+        <button onclick="startExperience()" id="playBtn" class="btn-main" style="margin-top: 20px;">Enter Legacy</button>
     </div>
 
-    <h2 class="category-title">Music Masterpieces</h2>
+    <h2 class="category-title">Music Collection</h2>
     <div class="video-grid">
-        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/sOnqjkM8Gu0?enablejsapi=1" allow="autoplay"></iframe></div>
-        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/Zi_XLOBDo_Y?enablejsapi=1"></iframe></div>
-        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/4V90Q7L2228?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/QNJL6nfu__Q?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/oRdxUFDoQe0?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/dsUXAEzaC3Q?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/XAi3VTSdTxU?enablejsapi=1"></iframe></div>
     </div>
 
     <h2 class="category-title">Funny & Rare Moments</h2>
     <div class="video-grid">
-        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/rV9uN673S_I?enablejsapi=1"></iframe></div>
-        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/3_p09T89S6k?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/lcC9BPk8hrw?enablejsapi=1"></iframe></div>
+        <div class="video-box"><iframe class="mj-video" src="https://www.youtube.com/embed/ays4kjgYA0E?enablejsapi=1"></iframe></div>
     </div>
 
     <div class="message-section">
-        <h3>Bluepanda AI Guarded Guestbook</h3>
-        <textarea id="userInput" style="width:100%; height:100px; border-radius:10px; padding:10px; margin-bottom:10px;" placeholder="Leave your tribute..."></textarea>
-        <button onclick="postMessage()">Send Message</button>
-        <div id="feed"></div>
+        <h3>Bluepanda AI Guestbook</h3>
+        <textarea id="userInput" style="width:100%; height:100px; border-radius:10px; padding:10px; margin-bottom:15px; color:black;" placeholder="Share your tribute..."></textarea>
+        <button onclick="postMessage()" class="btn-main" style="padding: 10px 25px; font-size: 0.8rem;">Post Message</button>
+        <div id="feed" style="margin-top: 25px; text-align: left;"></div>
     </div>
 
     <script>
@@ -157,14 +163,14 @@
             document.getElementById('playBtn').style.display = 'none';
         }
 
-        // Smart Audio Logic: Stop Billie Jean when Video Plays
+        // YouTube API to Stop Background Music when Video Plays
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         function onYouTubeIframeAPIReady() {
-            videos.forEach((video, index) => {
+            videos.forEach((video) => {
                 new YT.Player(video, {
                     events: {
                         'onStateChange': function(event) {
@@ -181,17 +187,16 @@
 
         function postMessage() {
             const msg = document.getElementById('userInput').value;
-            const blacklist = ["stupid", "bad", "hate"]; 
+            const blacklist = ["stupid", "bad", "hate", "fake"]; 
             if (blacklist.some(word => msg.toLowerCase().includes(word))) {
-                alert("Bluepanda AI: Stay respectful!");
-            } else {
+                alert("Bluepanda AI Intelligence: Please keep it respectful.");
+            } else if (msg.length > 5) {
                 const p = document.createElement('p');
-                p.textContent = "Tribute: " + msg;
+                p.innerHTML = `<strong>Tribute:</strong> ${msg}`;
                 document.getElementById('feed').prepend(p);
+                document.getElementById('userInput').value = "";
             }
         }
     </script>
 </body>
 </html>
- 
-                        
