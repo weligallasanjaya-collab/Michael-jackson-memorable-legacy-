@@ -3,295 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MJ Memorables | Bluepanda AI Sovereign Edition</title>
+    <title>MJ Memorables | Bluepanda AI</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Playfair+Display:ital,wght@1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            /* IMAGE 0 INTEGRATION: The vibrant purple/coral watercolor background */
+            /* FIXED: Matches your actual background filename */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('background.jpg') no-repeat center center fixed;
+                        url('1000093401.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* ----------------------- HEADER SECTION ----------------------- */
-        .header-container {
-            margin-top: 50px;
+        .header { margin-top: 20px; text-align: center; }
+        
+        /* FIXED: Matches your actual signature filename */
+        .sig-img { 
+            width: 250px; 
+            filter: invert(1); 
+            content: url('1000093403.jpg'); 
+        }
+
+        .brand { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7; }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 25px;
+            width: 85%;
+            max-width: 500px;
             text-align: center;
-            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            position: absolute;
+            bottom: 30px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* IMAGE 1 INTEGRATION: The MJ Signature as the main title */
-        .signature-title {
-            width: 320px;
-            max-width: 80%;
-            filter: invert(1); /* Makes the black signature white */
-            margin-bottom: 0;
-        }
-
-        .company-tag {
-            font-family: 'Orbitron', sans-serif;
-            color: rgba(255,255,255,0.8);
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            margin-top: -10px;
-        }
-
-        /* ----------------------- CENTRAL GLASS PANEL ----------------------- */
-        .glass-panel {
-            margin-top: 40px;
-            padding: 50px;
-            width: 80%;
-            max-width: 650px;
-            /* Glassmorphism Effect */
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.15);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .intro-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 30px;
-        }
-
-        .btn-legacy {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.6);
-            padding: 12px 40px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-legacy:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.5);
-        }
-
-        /* ----------------------- BOTTOM DASHBOARD ----------------------- */
-        .bottom-dashboard {
-            width: 90%;
-            max-width: 1300px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: auto; /* Pushes to bottom */
-            margin-bottom: 30px;
+            gap: 15px;
+            width: 95%;
+            justify-content: center;
             align-items: flex-end;
         }
 
-        /* Dash Panel Base (The bottom controls/guestbook panels) */
         .dash-panel {
-            padding: 25px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
         }
 
-        /* --- Panel 1: Video Circular Gallery --- */
-        .video-dash {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 10px;
-        }
-
-        .video-circle {
-            width: 150px;
-            height: 150px;
+        /* Circular Video Preview */
+        .vid-circle {
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid #00d4ff;
-            box-shadow: 0 0 20px rgba(0,212,255,0.4);
-            position: relative;
-            z-index: 2;
+            box-shadow: 0 0 20px rgba(0,212,255,0.5);
         }
 
-        /* Overlapping video background effect from your image */
-        .video-circle::before, .video-circle::after {
-            content: "";
-            position: absolute;
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            border: 2px solid rgba(0,212,255,0.4);
-            top: 50%; transform: translateY(-50%);
-            z-index: 1;
-        }
-        .video-circle::before { left: -70px; }
-        .video-circle::after { right: -70px; }
-
-        .video-circle iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            object-fit: cover;
-        }
-
-        /* --- Panel 2: Billie Jean Music --- */
-        .music-panel {
+        /* Music Control Panel (The one you circled) */
+        .player-panel {
+            width: 300px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            gap: 12px;
+            padding: 12px 20px;
         }
 
-        .music-dash {
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .play-icon {
-            font-size: 2rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .play-icon:hover {
-            color: white;
-            transform: scale(1.1);
-        }
-
-        /* --- Panel 3: Guestbook --- */
-        .guest-dash {
+        .play-btn {
+            width: 45px;
+            height: 45px;
+            background: white;
+            color: black;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
         }
 
-        .panel-header {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 10px;
+        .track-info { flex-grow: 1; }
+        .track-name { font-size: 0.9rem; font-weight: bold; }
+        .progress-bar {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.2);
+            margin-top: 8px; border-radius: 2px;
         }
+        .progress-fill { width: 60%; height: 100%; background: white; border-radius: 2px; }
 
-        .guest-input {
-            width: 100%;
-            padding: 10px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.8rem;
-            box-sizing: border-box;
+        .guest-panel { width: 280px; }
+        .input-box {
+            width: 100%; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 8px; color: white; font-size: 0.8rem; margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="header-container">
-        <img src="signature.jpg" alt="Michael Jackson Signature" class="signature-title">
-        <div class="company-tag">Produced by Bluepanda AI Web Company</div>
+    <div class="header">
+        <div class="sig-img"></div>
+        <div class="brand">PRODUCED BY BLUEPANDA AI WEB COMPANY</div>
     </div>
 
-    <div class="glass-panel">
-        <p class="intro-text">Michael Jackson Memorables is the collection of best moments and rare presentation, such as session by session, day by day, month by month, year by year, celebrating the legendary King of Pop. Experience the journey from the Jackson 5 to the history-making career of the King.</p>
-        <button onclick="startExperience()" id="playBtn" class="btn-legacy">Enter Legacy</button>
+    <div class="main-card">
+        <p style="font-size: 0.85rem;">Celebrating the King of Pop. Use the master player below to cycle through the greatest hits.</p>
+        <button style="background:white; color:black; border:none; padding:8px 20px; border-radius:20px; cursor:pointer; font-family:'Orbitron'; font-size:0.7rem; font-weight:bold;" onclick="nextTrack()">NEXT LEGACY TRACK ❯</button>
     </div>
 
-    <div class="bottom-dashboard">
-        
-        <div class="dash-panel video-dash">
-            <div class="video-circle">
-                <iframe class="mj-video" src="https://www.youtube.com/embed/QNJL6nfu__Q?controls=0&modestbranding=1&enablejsapi=1" allow="autoplay; encrypted-media"></iframe>
-            </div>
+    <div class="dashboard">
+        <div class="dash-panel">
+            <div class="vid-circle"><div id="player"></div></div>
         </div>
 
-        <div class="dash-panel music-panel">
-            <div class="play-icon" onclick="togglePlay()">▷</div>
-            <div class="music-dash">
-                <div style="color:white; font-size:1rem;">Billie Jean</div>
-                <div style="font-size:0.7rem;">Volume: Low</div>
+        <div class="dash-panel player-panel">
+            <div class="play-btn" id="masterPlay">▶</div>
+            <div class="track-info">
+                <div class="track-name" id="currentTrackName">Billie Jean</div>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
             </div>
-            <div style="font-size: 1.2rem; opacity: 0.6;">⏷</div>
+            <div style="opacity: 0.5;">🔊</div>
         </div>
 
-        <div class="dash-panel guest-dash">
-            <div class="panel-header">Guestbook</div>
-            <input type="text" class="guest-input" placeholder="Your name...">
-            <input type="text" class="guest-input" placeholder="Your tribute...">
+        <div class="dash-panel guest-panel">
+            <div style="font-weight: bold; font-size: 0.8rem;">Guestbook</div>
+            <div class="input-box">Leave a message...</div>
         </div>
     </div>
 
     <script>
-        const audio = document.getElementById('bgMusic');
-        const videos = document.querySelectorAll('.mj-video');
-        let isPlaying = false;
+        const playlist = [
+            { id: 'Zi_XLOBDo_Y', name: 'Billie Jean' },
+            { id: 'QNJL6nfu__Q', name: 'They Don\'t Care About Us' },
+            { id: 'dsUXAEzaC3Q', name: 'Smooth Criminal' }
+        ];
+        
+        let currentTrack = 0;
+        let ytPlayer;
 
-        function startExperience() {
-            audio.volume = 0.15; // Set volume low for Billie Jean
-            audio.play();
-            isPlaying = true;
-            document.getElementById('playBtn').innerHTML = "LEGACY ACTIVE";
-        }
-
-        function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                document.querySelector('.play-icon').innerHTML = "▶";
-            } else {
-                audio.play();
-                isPlaying = true;
-                document.querySelector('.play-icon').innerHTML = "▷";
-            }
-        }
-
-        // --- Standard YouTube API Switching Logic (Bluepanda AI) ---
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         function onYouTubeIframeAPIReady() {
-            videos.forEach((video) => {
-                new YT.Player(video, {
-                    events: {
-                        'onStateChange': function(event) {
-                            if (event.data == YT.PlayerState.PLAYING) {
-                                audio.pause();
-                                isPlaying = false;
-                                document.querySelector('.play-icon').innerHTML = "▶";
-                            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-                                audio.play();
-                                isPlaying = true;
-                                document.querySelector('.play-icon').innerHTML = "▷";
-                            }
-                        }
-                    }
-                });
+            ytPlayer = new YT.Player('player', {
+                height: '100%', width: '100%',
+                videoId: playlist[currentTrack].id,
+                playerVars: { 'autoplay': 0, 'controls': 0, 'modestbranding': 1 },
+                events: { 'onStateChange': onPlayerStateChange }
             });
         }
+
+        function onPlayerStateChange(event) {
+            const btn = document.getElementById('masterPlay');
+            btn.innerHTML = (event.data == YT.PlayerState.PLAYING) ? "⏸" : "▶";
+            if (event.data == YT.PlayerState.ENDED) nextTrack();
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            ytPlayer.loadVideoById(playlist[currentTrack].id);
+            document.getElementById('currentTrackName').innerText = playlist[currentTrack].name;
+        }
+
+        document.getElementById('masterPlay').addEventListener('click', () => {
+            if (ytPlayer.getPlayerState() == YT.PlayerState.PLAYING) {
+                ytPlayer.pauseVideo();
+            } else {
+                ytPlayer.playVideo();
+            }
+        });
     </script>
 </body>
 </html>
