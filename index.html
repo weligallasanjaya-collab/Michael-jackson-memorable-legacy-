@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Jackson Memorables | Bluepanda AI</title>
+    <style>
+        :root {
+            --gemini-white: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=2070') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* The Gemini Thinking Box */
+        .content-box {
+            position: relative;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 24px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        /* Animated border lines */
+        .content-box::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent, #fff);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            background-size: 200% 100%;
+            animation: moveLine 4s linear infinite;
+        }
+
+        @keyframes moveLine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .company-tag {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #00d4ff;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Circular Video Gallery */
+        .video-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .video-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 0 25px rgba(255,255,255,0.3);
+        }
+
+        .video-circle iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Message Box */
+        .message-section {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid white;
+            border-radius: 12px;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="content-box">
+        <h1>Michael Jackson Memorables</h1>
+        <div class="company-tag">Made by Bluepanda AI Web Company</div>
+        <p>Experience the journey of the King of Pop.</p>
+        <button onclick="startExperience()" id="playBtn">Click to Start Music & Experience</button>
+    </div>
+
+    <div class="video-container">
+        <div class="video-circle">
+            <iframe src="https://www.youtube.com/embed/Zi_XLOBDo_Y?controls=0" frameborder="0"></iframe>
+        </div>
+        <div class="video-circle">
+            <iframe src="https://www.youtube.com/embed/sOnqjkM8Gu0?controls=0" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="message-section">
+        <h3>Tribute Guestbook</h3>
+        <textarea id="userInput" placeholder="Leave a thank you message..."></textarea>
+        <button onclick="postMessage()">Post Tribute</button>
+        <div id="feed" style="margin-top: 20px; text-align: left;"></div>
+    </div>
+
+    <script>
+        // Audio Logic
+        function startExperience() {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.2; // Set low volume (20%)
+            audio.play();
+            document.getElementById('playBtn').style.display = 'none';
+        }
+
+        // Message Logic with Filter
+        function postMessage() {
+            const msg = document.getElementById('userInput').value;
+            const feed = document.getElementById('feed');
+            const blacklist = ["stupid", "bad", "hate", "fake"]; 
+            
+            let isBad = blacklist.some(word => msg.toLowerCase().includes(word));
+
+            if (isBad) {
+                alert("Bluepanda AI detected inappropriate content. Please be respectful.");
+            } else if (msg.length > 5) {
+                const post = document.createElement('p');
+                post.innerHTML = `<strong>Tribute:</strong> ${msg}`;
+                feed.prepend(post);
+                document.getElementById('userInput').value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>
